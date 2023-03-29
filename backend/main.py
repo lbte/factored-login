@@ -15,7 +15,7 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session = _fastapi.Dep
     if db_user:
         raise _fastapi.HTTPException(status_code=400, detail="Email already in use")
     
-    await _services.create_user(user, db)
+    user = await _services.create_user(user, db)
 
     # when the user registers authenticate it automatically
     return await _services.create_token(user)
@@ -69,3 +69,8 @@ async def update_skill(skill_id: int,
     await _services.update_skill(skill_id, skill, db, user)
 
     return {"message", "Successfully Updated"}
+
+# to test if the front is connecting to the back
+@app.get("/api")
+async def root():
+    return {"message", "Successfully Connected"}
