@@ -2,6 +2,7 @@ import fastapi as _fastapi
 import fastapi.security as _security
 import sqlalchemy.orm as _orm
 import services as _services, schemas as _schemas
+from typing import List
 
 app = _fastapi.FastAPI()
 
@@ -14,7 +15,10 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session = _fastapi.Dep
     if db_user:
         raise _fastapi.HTTPException(status_code=400, detail="Email already in use")
     
-    return await _services.create_user(user, db)
+    await _services.create_user(user, db)
+
+    # when the user registers authenticate it automatically
+    return await _services.create_token(user)
 
 # authentication when logging into the app
 #@app.post("/api/login")
@@ -43,3 +47,25 @@ async def generate_token(form_data: _security.OAuth2PasswordRequestForm = _fasta
 @app.get("/api/users/me", response_model=_schemas.User)
 async def get_user(user: _schemas.User = _fastapi.Depends(_services.get_current_user)):
     return user
+
+# to create the skills for the authenticated user
+@app.post("/api/skills", response_model=_schemas.Skill)
+async def create_skill(skill: _schemas.SkillCreate, 
+                       user: _schemas.User = _fastapi.Depends(_services.get_current_user), 
+                       db: _orm.Session = _fastapi.Depends(_services.get_db)):
+    return await _services.create_skill(user, db, skill)
+
+# to get a list with the skills that have been created for the authenticated user
+@app.get("/api/skills", response_model=List[_schemas.Skill])
+async def get_skills(user: _schemas.User = _fastapi.Depends(_services.get_current_user), db: _orm.Session = _fastapi.Depends(_services.get_db)):
+    return await _services.get_skills(user, db)
+
+# to update a skills
+@app.put("/api/skills/{skill_id}", status_code=204)
+async def update_skill(skill_id: int, 
+                       skill: _schemas.SkillCreate,
+                       user: _schemas.User = _fastapi.Depends(_services.get_current_user), 
+                       db: _orm.Session = _fastapi.Depends(_services.get_db)):
+    await _services.update_skill(skill_id, skill, db, user)
+
+    return {"message", "Successfully Updated"}

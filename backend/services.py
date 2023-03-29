@@ -31,8 +31,7 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session):
         email=user.email, 
         hashed_password=_hash.bcrypt.hash(user.hashed_password), 
         name=user.name, 
-        company_position=user.company_position,
-        skills=user.skills
+        company_position=user.company_position
     )
 
     # add the user to the db
@@ -69,7 +68,7 @@ async def create_token(user: _models.User):
 #async def profile_page(user: _schemas.UserCreate, db: _orm.Session):
 #    return f"Profile from {user.name}"
 
-
+# to get the user that is authenticated
 async def get_current_user( db: _orm.Session = _fastapi.Depends(get_db), token: str = _fastapi.Depends(oauth2schema)):
     try:
         # algorithm that it uses to encode
@@ -79,3 +78,42 @@ async def get_current_user( db: _orm.Session = _fastapi.Depends(get_db), token: 
         _fastapi.HTTPException(status_code=401, detail="Invalid Email or Password")
 
     return _schemas.User.from_orm(user)
+
+# to create a new skill to an user
+async def create_skill(user: _schemas.User, db: _orm.Session, skill: _schemas.SkillCreate):
+    skill = _models.Skill(**skill.dict(), user_id=user.id)
+    db.add(skill)
+    db.commit()
+    db.refresh(skill)
+
+    return _schemas.Skill.from_orm(skill)
+
+# to retrieve all skills for a user
+async def get_skills(user: _schemas.User, db: _orm.Session):
+    skills = db.query(_models.Skill).filter_by(user_id=user.id)
+
+    # loop through each skill (as an object) and add it to a list
+    return list(map(_schemas.Skill.from_orm, skills))
+
+# to select a specific skill according to its id
+async def _skill_selector(skill_id: int, user: _schemas.User, db: _orm.Session):
+    skill = (
+        db.query(_models.Skill).filter_by(user_id=user.id).filter(_models.Skill.id == skill_id).first()
+    )
+
+    if skill is None:
+        raise _fastapi.HTTPException(status_code=404, detail="Skill does not exist")
+    
+    return skill
+
+# to update a specific skill for a user
+async def update_skill(skill_id: int, skill: _schemas.SkillCreate, db: _orm.Session, user: _schemas.User):
+    skill_db = await _skill_selector(skill_id, user, db)
+
+    skill_db.name = skill.name
+    skill_db.level = skill.level
+
+    db.commit()
+    db.refresh(skill_db)
+
+    return _schemas.Skill.from_orm(skill_db)
