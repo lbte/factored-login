@@ -3,6 +3,7 @@ import ErrorMessage from "./ErrorMessage";
 import { UserContext } from "../context/UserContext";
 import SkillModal from "./SkillModal";
 
+// for creating the radar chart
 import {
     Chart as ChartJS,
     RadialLinearScale,

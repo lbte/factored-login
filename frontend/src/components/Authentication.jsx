@@ -20,6 +20,7 @@ const Authentication = () => {
         setIsRegister(!isRegister);
     };
 
+    // submit the registration information
     const submitRegistration = async () => {
         const requestOptions = {
             method: "POST",
@@ -46,7 +47,7 @@ const Authentication = () => {
         }
     };
 
-
+    // submit the login information
     const submitLogin = async () => {
         const requestOptions = {
             method: "POST",

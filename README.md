@@ -33,7 +33,7 @@ Once you have Docker installed, follow these steps to run the application:
 
 4. Run the following command to build the Docker image to be able to start the application: `docker build -t my-app .`
 
-5. Then run the following command to run that image and start the application: `docker run`
+5. Then run the following command to run that image and start the application: `docker run -p 3000:3000 my-app`
 
     This will start the application and display logs in the terminal.
 

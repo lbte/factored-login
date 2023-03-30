@@ -58,7 +58,6 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
             setErrorMessage("Something went wrong when creating the skill");
         } else {
             cleanFormData();
-            //handleModal();
         }
     };
 
