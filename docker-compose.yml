@@ -1,5 +1,5 @@
 # https://stackoverflow.com/questions/72943637/dockerizing-a-fastapi-backend-with-react-frontend-tips
-version: 3.8
+version: '3.8'
 services:
   backend:
     env_file:
@@ -21,6 +21,6 @@ services:
       dockerfile: ./Dockerfile
       restart: always
       ports:
-        - 127.0.0.1:3006:3006
+        - 127.0.0.1:3000:3000
       expose:
         -3000
