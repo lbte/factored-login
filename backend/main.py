@@ -20,17 +20,6 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session = _fastapi.Dep
     # when the user registers authenticate it automatically
     return await _services.create_token(user)
 
-# authentication when logging into the app
-#@app.post("/api/login")
-#async def login(user: _schemas.User, db: _orm.Session = _fastapi.Depends(_services.get_db)):
-#    user = await _services.authenticate_user(user.email, user.password, db)
-#
-#    # if the user doesn't exist
-#    if not user:
-#        raise _fastapi.HTTPException(status_code=401, detail="Invalid credentials")
-#    
-#    return await _services.profile_page(user, db)
-
 
 # to get a token when the user authenticates
 @app.post("/api/token")

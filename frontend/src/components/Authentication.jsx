@@ -79,35 +79,35 @@ const Authentication = () => {
                     <div className="field">
                         <label className="label">Name</label>
                         <div className="control">
-                            <input type="text" placeholder="Enter name" value={name} onChange={ (e) => setName(e.target.value)} className="input"/>
+                            <input type="text" placeholder="Enter name" value={name} onChange={ (e) => setName(e.target.value)} className="input" required/>
                         </div>
                     </div>
                 )}
                 <div className="field">
                     <label className="label">Email</label>
                     <div className="control">
-                        <input type="email" placeholder="Enter email" value={email} onChange={ (e) => setEmail(e.target.value)} className="input"/>
+                        <input type="email" placeholder="Enter email" value={email} onChange={ (e) => setEmail(e.target.value)} className="input" required/>
                     </div>
                 </div>
                 {isRegister && (
                     <div className="field">
                         <label className="label">Company Position</label>
                         <div className="control">
-                            <input type="text" placeholder="Enter company position" value={companyPosition} onChange={ (e) => setCompanyPosition(e.target.value)} className="input"/>
+                            <input type="text" placeholder="Enter company position" value={companyPosition} onChange={ (e) => setCompanyPosition(e.target.value)} className="input" required/>
                         </div>
                     </div>
                 )}
                 <div className="field">
                     <label className="label">Password</label>
                     <div className="control">
-                        <input type="password" placeholder="Enter password" value={password} onChange={ (e) => setPassword(e.target.value)} className="input"/>
+                        <input type="password" placeholder="Enter password" value={password} onChange={ (e) => setPassword(e.target.value)} className="input" required/>
                     </div>
                 </div>
                 {isRegister && (
                     <div className="field">
                         <label className="label">Confirm Password</label>
                         <div className="control">
-                            <input type="password" placeholder="Enter password" value={confirmationPassword} onChange={ (e) => setConfirmationPassword(e.target.value)} className="input"/>
+                            <input type="password" placeholder="Enter password" value={confirmationPassword} onChange={ (e) => setConfirmationPassword(e.target.value)} className="input" required/>
                         </div>
                     </div>
                 )}

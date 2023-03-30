@@ -64,10 +64,6 @@ async def create_token(user: _models.User):
 
     return dict(access_token=token, token_type="bearer")
 
-################# just an example to try to see if the authentication works
-#async def profile_page(user: _schemas.UserCreate, db: _orm.Session):
-#    return f"Profile from {user.name}"
-
 # to get the user that is authenticated
 async def get_current_user( db: _orm.Session = _fastapi.Depends(get_db), token: str = _fastapi.Depends(oauth2schema)):
     try:

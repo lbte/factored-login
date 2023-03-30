@@ -35,6 +35,6 @@ class Skill(_database.Base):
     name = _sql.Column(_sql.String, unique=True, index=True)
     level = _sql.Column(_sql.Integer)
     
-
-    user = _orm.relationship("User", back_populates="skills")
     # foreign key relationship
+    user = _orm.relationship("User", back_populates="skills")
+    
