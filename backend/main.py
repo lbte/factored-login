@@ -15,10 +15,10 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session = _fastapi.Dep
     if db_user:
         raise _fastapi.HTTPException(status_code=400, detail="Email already in use")
     
-    user = await _services.create_user(user, db)
+    nUser = await _services.create_user(user, db)
 
     # when the user registers authenticate it automatically
-    return await _services.create_token(user)
+    return await _services.create_token(nUser)
 
 
 # to get a token when the user authenticates
@@ -35,6 +35,7 @@ async def generate_token(form_data: _security.OAuth2PasswordRequestForm = _fasta
 # get the current user
 @app.get("/api/users/me", response_model=_schemas.User)
 async def get_user(user: _schemas.User = _fastapi.Depends(_services.get_current_user)):
+    print(user)
     return user
 
 # to create the skills for the authenticated user

@@ -31,7 +31,7 @@ const Authentication = () => {
         const data = await response.json();
 
         if (!response.ok) {
-            setErrorMessage(data.detail.toString());
+            setErrorMessage(data.detail);
         } else {
             setToken(data.access_token);
         }
@@ -115,12 +115,12 @@ const Authentication = () => {
                 <br/>
                 <div className="field is-grouped is-grouped-centered">
                     <div className="control">
-                        <button className="button is-primary">{!isRegister ? "Login" : "Register"}</button>
+                        <button type="submit" className="button is-primary">{!isRegister ? "Login" : "Register"}</button>
                     </div>
                 </div>
                 <div className="field is-grouped is-grouped-centered">
                     <div className="control">
-                        <button className="button is-light" onClick={handleIsRegister}>Change to {isRegister ? "Login" : "Register"}</button>
+                        <button type="button" className="button is-light" onClick={handleIsRegister}>Change to {isRegister ? "Login" : "Register"}</button>
                     </div>
                 </div>
             </form>

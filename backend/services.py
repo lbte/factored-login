@@ -71,7 +71,7 @@ async def get_current_user( db: _orm.Session = _fastapi.Depends(get_db), token: 
         payload = _jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
         user = db.query(_models.User).get(payload["id"])
     except:
-        _fastapi.HTTPException(status_code=401, detail="Invalid Email or Password")
+        raise _fastapi.HTTPException(status_code=401, detail="Invalid Email or Password")
 
     return _schemas.User.from_orm(user)
 

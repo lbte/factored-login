@@ -45,7 +45,7 @@ const Profile = () => {
             method: "GET",
             header: {
                 "Content-Type": "application/json",
-                Autorization: "Bearer" + token,
+                Authorization: "Bearer " + token,
             },
         };
 
@@ -66,7 +66,7 @@ const Profile = () => {
             method: "GET",
             header: {
                 "Content-Type": "application/json",
-                Autorization: "Bearer" + token,
+                Authorization: "Bearer " + token,
             },
         };
 
@@ -76,6 +76,7 @@ const Profile = () => {
             setErrorMessage("Something went wrong. Couldn't get user data");
         } else {
             const data = await response.json();
+            console.log(data)
             setName(data.name);
             setEmail(data.email);
             setCompanyPosition(data.company_position)
@@ -115,7 +116,6 @@ const Profile = () => {
     // if the skills are loaded and if they exist then display the graph
     return (
         <>
-
             <SkillModal active={activeModal} handleModal={handleModal} token={token} id={id} errorMessage={setErrorMessage}/>
             <section className="section">
                 <div class='card equal-height'>

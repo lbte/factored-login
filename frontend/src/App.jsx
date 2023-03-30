@@ -35,6 +35,7 @@ const App = () => {
   // if the token doesn't exist then show the register screen, otherwise show table
   return (
     <>
+    <div>{token?.substring(0, 7) || "No hay token"}</div>
       <div className="columns is-centered">
         <div className="column is-one-quarter"></div>
         <div className="column m-5 is-two quarters">

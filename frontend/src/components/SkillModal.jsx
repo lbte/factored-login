@@ -17,7 +17,7 @@ const SkillModal = ({active, handleModal, token, id, setErroreMessage}) => {
                 method: "GET",
                 header: {
                     "Content-Type": "application/json",
-                    Autorization: "Bearer" + token,
+                    Autorization: "Bearer " + token,
                 },
             };
 
@@ -46,7 +46,7 @@ const SkillModal = ({active, handleModal, token, id, setErroreMessage}) => {
             method: "POST",
             header: {
                 "Content-Type": "application/json",
-                Autorization: "Bearer" + token,
+                Autorization: "Bearer " + token,
             },
             body: JSON.stringify({name: name, level:level}),
         };
@@ -66,7 +66,7 @@ const SkillModal = ({active, handleModal, token, id, setErroreMessage}) => {
             method: "PUT",
             header: {
                 "Content-Type": "application/json",
-                Autorization: "Bearer" + token,
+                Autorization: "Bearer " + token,
             },
             body: JSON.stringify({name: name, level:level}),
         };
