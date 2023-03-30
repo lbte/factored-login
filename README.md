@@ -31,11 +31,9 @@ Once you have Docker installed, follow these steps to run the application:
 
 3. Open a terminal or command prompt and navigate to the directory where you unzipped the project files, or open the terminal or command prompt inside of that directory by right clicking your mouse and choosing the `Open in Terminal` option.
 
-4. Run the following command to build the Docker image to be able to start the application: 
+4. Run the following command to start the application: 
 
-    `docker build -t my-app .`
-
-5. Then run the following command to run that image and start the application: `docker run -p 3000:3000 my-app`
+    `docker-compose up`
 
     This will start the application and display logs in the terminal.
 
@@ -43,8 +41,9 @@ Once you have Docker installed, follow these steps to run the application:
 
 That's it! You can now use the web application to register, login, create skills for the user that's logged in and see them in a spyder chart.
 
+7. Whenever you want the application to stop running, go back to the terminal or command line and press they key combination `Ctrl + C`.
 
-## Authors
+## Author
 
 Laura Bustamante
 
