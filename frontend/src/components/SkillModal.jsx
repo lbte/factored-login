@@ -4,12 +4,12 @@ import {UserContext} from "../context/UserContext";
 const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
     const {token} = useContext(UserContext);
     const [name, setName] = useState("");
-    const [level, setLevel] = useState("");
+    const [level, setLevel] = useState(0);
 
     // reset the value of the form fields
     const cleanFormData = () => {
         setName("");
-        setLevel("");
+        setLevel(0);
     }
 
     // function to update the skill
@@ -58,9 +58,8 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
             setErrorMessage("Something went wrong when creating the skill");
         } else {
             cleanFormData();
-            handleModal();
+            //handleModal();
         }
-        ;
     };
 
     const handleUpdateSkill = async (e) => {

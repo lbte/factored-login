@@ -36,7 +36,7 @@ const App = () => {
     return (
         <>
             <div className="columns is-centered">
-                <div className="column is-one-quarter"></div>
+                <div className="column"></div>
                 <div className="column m-5 is-three-quarters">
                     {
                         !token ? (
@@ -46,7 +46,7 @@ const App = () => {
                         )
                     }
                 </div>
-                <div className="column is-one-quarter"></div>
+                <div className="column"></div>
             </div>
         </>
     );

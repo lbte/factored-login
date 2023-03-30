@@ -13,8 +13,8 @@ class User(_database.Base):
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     name = _sql.Column(_sql.String)
     email = _sql.Column(_sql.String, unique=True, index=True)
-    hashed_password = _sql.Column(_sql.String)
     company_position = _sql.Column(_sql.String)
+    hashed_password = _sql.Column(_sql.String)
     
     # foreign key relationship, back_populates to the field in the other table
     #skills: _orm.Mapped[Set["Skill"]] = _orm.relationship("Skill", back_populates="user")

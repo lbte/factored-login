@@ -59,7 +59,7 @@ const Authentication = () => {
 
         if (!response.ok) {
             setErrorMessage(data.detail);
-            console.log(data.detail.toString())
+            console.log(data.detail)
         } else {
             setToken(data.access_token);
         }
@@ -73,6 +73,7 @@ const Authentication = () => {
     // create the registration form
     return (
         <div className="column">
+            <div>{isRegister}</div>
             <form className="box" onSubmit={ isRegister ? handleRegisterSubmit : handleLoginSubmit }>
                 <h1 className="title has-text-centered">{isRegister ? "Register" : "Login"}</h1>
                 {isRegister && (

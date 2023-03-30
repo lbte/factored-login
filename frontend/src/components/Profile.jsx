@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import ErrorMessage from "./ErrorMessage";
-import {UserContext} from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 import SkillModal from "./SkillModal";
 
 import {
@@ -25,7 +25,7 @@ import {
 
 const Profile = () => {
     const {token, user} = useContext(UserContext);
-    const [skills, setSkills] = useState(null);
+    const [skills, setSkills] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [loaded, setLoaded] = useState(false);
     const [activeModal, setActiveModal] = useState(false);
@@ -72,8 +72,8 @@ const Profile = () => {
         };
         const response = await fetch("/api/skills", requestOptions);
         if (response.ok) {
-            //setSkills(await response.json());
-            //setLoaded(true);
+            setSkills(await response.json());
+            setLoaded(true);
             //setLabels(JSON.parse(JSON.stringify(response.json())).map((skill) => skill.name));
             //setLabel('Skills');
             //setData(JSON.parse(JSON.stringify(response.json())).map((skill) => skill.level));
@@ -107,11 +107,13 @@ const Profile = () => {
 
     
     const dataRadar = {
-        labels: ["Python", "SQL", "C#", "HTML", "Java"],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
+        //labels: ["Python", "SQL", "C#", "HTML", "Java"],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
+        labels: JSON.parse(JSON.stringify(skills)).map((skill) => skill.name), //["Python", "SQL", "C#", "HTML", "Java"],//
         datasets: [
             {
                 label: 'Skills',
-                data: [9, 8, 6, 6, 5],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.level),
+                //data: [9, 8, 6, 6, 5],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.level),
+                data: JSON.parse(JSON.stringify(skills)).map((skill) => skill.level), //[9, 8, 6, 6, 5],//
                 backgroundColor: 'rgba(63, 209, 187, 0.2)',
                 borderColor: 'rgb(4, 181, 160)',
                 borderWidth: 1,
@@ -171,7 +173,7 @@ const Profile = () => {
                                             </tbody>
                                             <button className="button m-5 is-primary" onClick={() => setActiveModal(true)}>Create skill</button>
                                         </table>
-                                    ) : <p></p>}
+                                    ) : <p>Loading</p>}
                                     
                                     <ErrorMessage message={errorMessage}/>
 
