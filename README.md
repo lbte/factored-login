@@ -35,13 +35,13 @@ Once you have Docker installed, follow these steps to run the application:
 
     `docker-compose up`
 
-    This will start the application and display logs in the terminal.
+    This will start the application and display logs in the terminal (keep the terminal or console open).
 
 6. Open a web browser and go to [http://localhost:3000](http://localhost:3000). This will open the web application in your browser.
 
-That's it! You can now use the web application to register, login, create skills for the user that's logged in and see them in a spyder chart.
+    That's it! You can now use the web application to register, login, create skills for the user that's logged in and see them in a spyder chart.
 
-7. Whenever you want the application to stop running, go back to the terminal or command line and press they key combination `Ctrl + C`.
+7. Whenever you want the application to stop running, go back to the terminal or command line and press the key combination `Ctrl + C`.
 
 ## Author
 
