@@ -31,7 +31,9 @@ Once you have Docker installed, follow these steps to run the application:
 
 3. Open a terminal or command prompt and navigate to the directory where you unzipped the project files, or open the terminal or command prompt inside of that directory by right clicking your mouse and choosing the `Open in Terminal` option.
 
-4. Run the following command to build the Docker image to be able to start the application: `docker build -t my-app .`
+4. Run the following command to build the Docker image to be able to start the application: 
+
+    `docker build -t my-app .`
 
 5. Then run the following command to run that image and start the application: `docker run -p 3000:3000 my-app`
 
