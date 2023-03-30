@@ -3,6 +3,26 @@ import ErrorMessage from "./ErrorMessage";
 import {UserContext} from "../context/UserContext";
 import SkillModal from "./SkillModal";
 
+import {
+    Chart as ChartJS,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+  import { Radar } from 'react-chartjs-2';
+
+  ChartJS.register(
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend
+  );
+
 const Profile = () => {
     const {token, user} = useContext(UserContext);
     const [skills, setSkills] = useState(null);
@@ -11,7 +31,7 @@ const Profile = () => {
     const [activeModal, setActiveModal] = useState(false);
     const [id, setId] = useState(null);
     const avatarTypes = ["avataaars", "human", "bottts", "jdenticon", "identicon", "gridy", "micah"];
-    // Setting up the initial states using react hook 'useState'
+    // Setting up the initial states for the avatar using react hook 'useState'
     const [sprite, setSprite] = useState("bottts");
     const [seed, setSeed] = useState(1000);
 
@@ -62,23 +82,22 @@ const Profile = () => {
     const handleModal = () => {
         setActiveModal(!activeModal);
         getSkills();
+        console.log(skills);
         setId(null);
     }
 
     const data = {
-        labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+        labels: JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
         datasets: [
             {
-                label: '# of Votes',
-                data: [2, 9, 3, 5, 2, 3],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                label: 'Skills',
+                data: JSON.parse(JSON.stringify(skills)).map((skill) => skill.level),
+                backgroundColor: 'rgba(63, 209, 187, 0.2)',
+                borderColor: 'rgb(4, 181, 160)',
                 borderWidth: 1,
             },
         ],
     };
-
-    // <Radar data={data} />
 
     // if the skills are loaded and if they exist then display the graph
     return (
@@ -87,62 +106,63 @@ const Profile = () => {
                         handleModal={handleModal}
                         id={id}
                         setErrorMessage={setErrorMessage}/>
-            <section className="section">
-                <div className='card equal-height'>
-                    {user &&
-                        <div className="card-content is-flex">
-                            <div className="media">
-                                <div className="media-left">
-                                    <figure className="image is-128x128 is-inline-block">
-                                        <img className="is-rounded m-5"
-                                             src={`https://avatars.dicebear.com/api/${sprite}/${seed}.svg`}
-                                             alt="Sprite"/>
-                                    </figure>
-                                </div>
-                                <div className="media-content m-5">
+            <div className='card equal-height'>
+                {user &&
+                    <div className="card-content is-flex">
+                        <div className="media">
+                            <div className="media-left">
+                                <figure className="image is-128x128 is-inline-block">
+                                    <img className="is-rounded m-5"
+                                         src={`https://avatars.dicebear.com/api/${sprite}/${seed}.svg`}
+                                         alt="Sprite"/>
+                                </figure>
+                            </div>
+                            <div className="media-content m-5">
+                                <section className="section">
                                     <p className="title">Name: {user.name}</p>
-                                    <p className="subtitle">Email: {user.email}</p>
+                                    <p className="subtitle mt-2">Email: {user.email}</p>
                                     <p className="subtitle">Company position: {user.company_position}</p>
-                                </div>
+                                </section>
+                                <section className="section">
+                                    <p className="title">{user.name}'s skills:</p>
+                                    {loaded && skills ? (
+                                        <table className="table is-fullwidth">
+                                            <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Name</th>
+                                                <th>Level</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {skills.map((skill) => (
+                                                <tr key={skill.id}>
+                                                    <td>{skill.id}</td>
+                                                    <td>{skill.name}</td>
+                                                    <td>{skill.level}</td>
+                                                    <td>
+                                                        <button className="button mr-2 is-info is-light"
+                                                                onClick={() => handleUpdateSkill(skill.id)}>Update
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    ) : <p>Loading</p>}
+                                    <button className="button m-5 is-primary" onClick={() => setActiveModal(true)}>Create skill</button>
+
+                                    <ErrorMessage message={errorMessage}/>
+
+                                    <Radar data={data}/>
+                                </section>
+                                
                             </div>
                         </div>
-                    }
-                </div>
-            </section>
-
-            <section className="section">
-                {loaded && skills ? (
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Level</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {skills.map((skill) => (
-                            <tr key={skill.id}>
-                                <td>{skill.id}</td>
-                                <td>{skill.name}</td>
-                                <td>{skill.level}</td>
-                                <td>
-                                    <button className="button m-5 is-info is-light"
-                                            onClick={() => handleUpdateSkill(skill.id)}>Update
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                ) : <p>Loading</p>}
-            </section>
-
-
-            <button className="button m-5 is-primary" onClick={() => setActiveModal(true)}>Create skill</button>
-
-            <ErrorMessage message={errorMessage}/>
+                    </div>
+                }
+            </div>
         </>
     );
 };
