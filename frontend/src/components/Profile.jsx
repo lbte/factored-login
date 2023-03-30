@@ -35,6 +35,14 @@ const Profile = () => {
     const [sprite, setSprite] = useState("bottts");
     const [seed, setSeed] = useState(1000);
 
+    //const [labels, setLabels] = useState(null); 
+    //const [datasets, setDatasets] = useState(null); 
+    //const [label, setLabel] = useState(null); 
+    //const [data, setData] = useState(null); 
+    //const [backgroundColor, setBackgroundColor] = useState(null); 
+    //const [borderColor, setBorderColor] = useState(null); 
+    //const [borderWidth, setBorderWidth] = useState(null); 
+
     // Function to set the current sprite type
     const handleSprite = async () => {
         const pos = Math.floor(Math.random() * avatarTypes.length);
@@ -64,11 +72,23 @@ const Profile = () => {
         };
         const response = await fetch("/api/skills", requestOptions);
         if (response.ok) {
-            setSkills(await response.json());
+            //setSkills(await response.json());
+            //setLoaded(true);
+            //setLabels(JSON.parse(JSON.stringify(response.json())).map((skill) => skill.name));
+            //setLabel('Skills');
+            //setData(JSON.parse(JSON.stringify(response.json())).map((skill) => skill.level));
+            //setBackgroundColor('rgba(63, 209, 187, 0.2)');
+            //setBorderColor('rgb(4, 181, 160)');
+            //setBorderWidth(1);
+            //setDatasets([label, data, backgroundColor, borderColor, borderWidth]);
+//
+            //const dataRadar = {
+            //    labels: labels,
+            //    datasets: datasets,
+            //};
         } else {
             setErrorMessage("Something went wrong. Couldn't create the skill");
         }
-        setLoaded(true);
     };
 
     // use the function
@@ -82,23 +102,23 @@ const Profile = () => {
     const handleModal = () => {
         setActiveModal(!activeModal);
         getSkills();
-        console.log(skills);
         setId(null);
     }
 
-    const data = {
-        labels: JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
+    
+    const dataRadar = {
+        labels: ["Python", "SQL", "C#", "HTML", "Java"],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
         datasets: [
             {
                 label: 'Skills',
-                data: JSON.parse(JSON.stringify(skills)).map((skill) => skill.level),
+                data: [9, 8, 6, 6, 5],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.level),
                 backgroundColor: 'rgba(63, 209, 187, 0.2)',
                 borderColor: 'rgb(4, 181, 160)',
                 borderWidth: 1,
             },
         ],
     };
-
+    
     // if the skills are loaded and if they exist then display the graph
     return (
         <>
@@ -149,13 +169,13 @@ const Profile = () => {
                                                 </tr>
                                             ))}
                                             </tbody>
+                                            <button className="button m-5 is-primary" onClick={() => setActiveModal(true)}>Create skill</button>
                                         </table>
-                                    ) : <p>Loading</p>}
-                                    <button className="button m-5 is-primary" onClick={() => setActiveModal(true)}>Create skill</button>
-
+                                    ) : <p></p>}
+                                    
                                     <ErrorMessage message={errorMessage}/>
 
-                                    <Radar data={data}/>
+                                    <Radar data={dataRadar}/>
                                 </section>
                                 
                             </div>
