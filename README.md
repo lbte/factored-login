@@ -19,41 +19,31 @@ To install Docker, follow the instructions for your operating system on the offi
 Once you have Docker installed, follow these steps to run the application:
 
 1. Download the project files from GitHub: [https://github.com/lbte/factored-login.git](https://github.com/lbte/factored-login.git)
-    a. When you go to the links page, click the green button that says `<> Code`.
-    b. Select the option that says `Download ZIP`.
+    * When you go to the links page, click the green button that says `<> Code`.
+    * Select the option that says `Download ZIP`.
 
 2. Unzip the downloaded file to a directory of your choice.
 
-3. Open a terminal or command prompt and navigate to the directory where you unzipped the project files or open the terminal or command prompt inside of that directory by right clicking your mouse and choosing `Open in Terminal`.
+3. Open a terminal or command prompt and navigate to the directory where you unzipped the project files or open the terminal or command prompt inside of that directory by right clicking your mouse and choosing the `Open in Terminal` option.
 
 4. Run the following command to start the application:
     `docker-compose up`
 
-### Executing program
+    This will start the application and display logs in the terminal.
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+5. Open a web browser and go to [http://localhost:3000](http://localhost:3000). This will open the web application in your browser.
 
-## Help
+That's it! You can now use the web application to register, login, create skills for the user that's logged in and see them in a spyder chart.
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 
 Laura Bustamante
 
 
-## Acknowledgments
+## Credits
 
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+* [Rithmic](https://www.youtube.com/@iamrithmic) and [IndianCoders](https://www.youtube.com/@IndianCoders) Tutorials on Youtube.
+* The frontend was built using [React](https://react.dev).
+* The backend was built using [FastAPI](https://fastapi.tiangolo.com).
+* Docker was used to containerize the application.
