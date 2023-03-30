@@ -85,15 +85,13 @@ const Profile = () => {
         setId(null);
     }
 
-    
+    // skills data to make the radar chart
     const dataRadar = {
-        //labels: ["Python", "SQL", "C#", "HTML", "Java"],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
-        labels: JSON.parse(JSON.stringify(skills)).map((skill) => skill.name), //["Python", "SQL", "C#", "HTML", "Java"],//
+        labels: JSON.parse(JSON.stringify(skills)).map((skill) => skill.name),
         datasets: [
             {
                 label: 'Skills',
-                //data: [9, 8, 6, 6, 5],//JSON.parse(JSON.stringify(skills)).map((skill) => skill.level),
-                data: JSON.parse(JSON.stringify(skills)).map((skill) => skill.level), //[9, 8, 6, 6, 5],//
+                data: JSON.parse(JSON.stringify(skills)).map((skill) => skill.level), 
                 backgroundColor: 'rgba(63, 209, 187, 0.2)',
                 borderColor: 'rgb(4, 181, 160)',
                 borderWidth: 1,
@@ -101,7 +99,7 @@ const Profile = () => {
         ],
     };
     
-    // if the skills are loaded and if they exist then display the graph
+    // if the skills are loaded and if they exist then display the table with the skills
     return (
         <>
             <SkillModal active={activeModal}

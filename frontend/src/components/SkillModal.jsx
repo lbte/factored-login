@@ -41,7 +41,7 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
 
     }, [id, token]);
 
-    // function that handles the creation of a lead
+    // function that handles the creation of a skill
     const handleCreateSkill = async (e) => {
         e.preventDefault();
         const requestOptions = {
@@ -62,6 +62,7 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
         }
     };
 
+    // function that handles the update of a skill to get the info of it with the id 
     const handleUpdateSkill = async (e) => {
         e.preventDefault();
         const requestOptions = {

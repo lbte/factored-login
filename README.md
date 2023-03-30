@@ -23,15 +23,21 @@ Once you have Docker installed, follow these steps to run the application:
     * Select the option that says `Download ZIP`.
 
 2. Unzip the downloaded file to a directory of your choice.
+    * To unzip a file in Windows, follow these steps:
+        1. Right-click on the compressed file.
+        2. Select "Extract All" from the context menu.
+        3. Choose a destination folder to extract the contents of the compressed file.
+        4. Click the "Extract" button.
 
-3. Open a terminal or command prompt and navigate to the directory where you unzipped the project files or open the terminal or command prompt inside of that directory by right clicking your mouse and choosing the `Open in Terminal` option.
+3. Open a terminal or command prompt and navigate to the directory where you unzipped the project files, or open the terminal or command prompt inside of that directory by right clicking your mouse and choosing the `Open in Terminal` option.
 
-4. Run the following command to start the application:
-    `docker-compose up`
+4. Run the following command to build the Docker image to be able to start the application: `docker build -t my-app .`
+
+5. Then run the following command to run that image and start the application: `docker run`
 
     This will start the application and display logs in the terminal.
 
-5. Open a web browser and go to [http://localhost:3000](http://localhost:3000). This will open the web application in your browser.
+6. Open a web browser and go to [http://localhost:3000](http://localhost:3000). This will open the web application in your browser.
 
 That's it! You can now use the web application to register, login, create skills for the user that's logged in and see them in a spyder chart.
 
@@ -43,7 +49,7 @@ Laura Bustamante
 
 ## Credits
 
-* [Rithmic](https://www.youtube.com/@iamrithmic) and [IndianCoders](https://www.youtube.com/@IndianCoders) Tutorials on Youtube.
 * The frontend was built using [React](https://react.dev).
 * The backend was built using [FastAPI](https://fastapi.tiangolo.com).
 * Docker was used to containerize the application.
+* Based on [Rithmic](https://www.youtube.com/@iamrithmic) and [IndianCoders](https://www.youtube.com/@IndianCoders) Tutorials on Youtube.

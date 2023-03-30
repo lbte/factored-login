@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import Profile from "./Profile"
 
+// to show the title and logout button as well as the profile with it
 const Header = ({title}) => {
     const { token, setToken } = useContext(UserContext);
 
