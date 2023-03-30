@@ -87,7 +87,6 @@ async def create_skill(user: _schemas.User, db: _orm.Session, skill: _schemas.Sk
 # to retrieve all skills for a user
 async def get_skills(user: _schemas.User, db: _orm.Session):
     skills = db.query(_models.Skill).filter_by(user_id=user.id)
-
     # loop through each skill (as an object) and add it to a list
     return list(map(_schemas.Skill.from_orm, skills))
 

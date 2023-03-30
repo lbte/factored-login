@@ -35,7 +35,6 @@ async def generate_token(form_data: _security.OAuth2PasswordRequestForm = _fasta
 # get the current user
 @app.get("/api/users/me", response_model=_schemas.User)
 async def get_user(user: _schemas.User = _fastapi.Depends(_services.get_current_user)):
-    print(user)
     return user
 
 # to create the skills for the authenticated user
@@ -49,6 +48,12 @@ async def create_skill(skill: _schemas.SkillCreate,
 @app.get("/api/skills", response_model=List[_schemas.Skill])
 async def get_skills(user: _schemas.User = _fastapi.Depends(_services.get_current_user), db: _orm.Session = _fastapi.Depends(_services.get_db)):
     return await _services.get_skills(user, db)
+
+@app.get("/api/skills/{skill_id}", response_model=_schemas.Skill)
+async def get_skill(skill_id: int,
+                     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+                     db: _orm.Session = _fastapi.Depends(_services.get_db)):
+    return await _services._skill_selector(skill_id, user, db)
 
 # to update a skills
 @app.put("/api/skills/{skill_id}", status_code=204)

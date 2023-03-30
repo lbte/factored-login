@@ -31,6 +31,7 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
                 const data = await response.json();
                 setName(data.name);
                 setLevel(data.level);
+                console.log(data);
             }
         };
 
