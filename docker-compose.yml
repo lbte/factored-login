@@ -1,26 +1,26 @@
 # https://stackoverflow.com/questions/72943637/dockerizing-a-fastapi-backend-with-react-frontend-tips
-version: '3.8'
+version: '3.9'
 services:
   backend:
-    env_file:
-      - backend/.env
     build:
       context: ./backend
-      dockerfile: ./DockerFile
+      dockerfile: ./Dockerfile
     restart: always
     ports:
-      - "127.0.0.1:8000:8000"
+      - "8000:8000"
     expose:
       - 8000
+    volumes:
+      - ./backend:/app
 
   frontend:
-    env_file:
-      - frontend/.env
     build:
       context: ./frontend/
       dockerfile: ./Dockerfile
-      restart: always
-      ports:
-        - 127.0.0.1:3000:3000
-      expose:
-        -3000
+    restart: always
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    volumes:
+      - ./frontend:/app
