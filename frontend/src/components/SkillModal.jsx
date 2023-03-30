@@ -50,7 +50,7 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + token,
             },
-            body: JSON.stringify({name, level}),
+            body: JSON.stringify({name: name, level: level}),
         };
 
         const response = await fetch("/api/skills", requestOptions);
@@ -58,6 +58,7 @@ const SkillModal = ({active, handleModal, id, setErrorMessage}) => {
             setErrorMessage("Something went wrong when creating the skill");
         } else {
             cleanFormData();
+            handleModal();
         }
     };
 

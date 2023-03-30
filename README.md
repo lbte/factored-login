@@ -35,7 +35,7 @@ Once you have Docker installed, follow these steps to run the application:
 
     `docker-compose up`
 
-    This will start the application and display logs in the terminal (keep the terminal or console open).
+    This will start the application and display logs in the terminal, this might take a while, please be patient (keep the terminal or console open until you want to stop running the application).
 
 6. Open a web browser and go to [http://localhost:3000](http://localhost:3000). This will open the web application in your browser.
 

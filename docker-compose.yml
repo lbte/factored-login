@@ -16,6 +16,9 @@ services:
     build:
       context: ./frontend/
       dockerfile: ./Dockerfile
+      tags:
+        - my-frontend:latest
+    image: my-frontend:latest
     restart: always
     ports:
       - "3000:3000"
