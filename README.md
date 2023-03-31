@@ -12,7 +12,7 @@ This app is a login and register page that allows you to register an user, go to
 
 Before you can run the application, you need to have Docker installed on your computer. Docker is a tool that allows you to run applications in containers, which makes it easy to run applications without worrying about setting up your computer environment.
 
-To install Docker, follow the instructions for your operating system on the official Docker website: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
+To install Docker, follow the instructions for your operating system on the official Docker website: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/). **You must keep the Docker window open when doing the step 4 from the following section.** 
 
 ### Running the application
 

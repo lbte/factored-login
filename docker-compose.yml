@@ -10,7 +10,7 @@ services:
     expose:
       - 8000
     volumes:
-      - ./backend:/app
+      - .:/backend/app
 
   frontend:
     build:
@@ -27,4 +27,4 @@ services:
     links:
       - backend
     volumes:
-      - ./frontend:/app
+      - .:/frontend/app
