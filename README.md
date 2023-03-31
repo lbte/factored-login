@@ -16,7 +16,7 @@ To install Docker, follow the instructions for your operating system on the offi
 
 When you install Docker, you must open it, in case it shows a message to update wsl, you can take two ways to do it:
 1. Open a command promt or terminal by opening any directory, right clicking your mouse and choosing the `Open in Terminal` option. Then write the following command: `wsl --update` and after it's done then open the Docker Desktop application.
-2. In case this doesn't work, click on the following link [Windows Kernel Package](https://learn.microsoft.com/es-es/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package) and follow the instructions to install it.
+2. In case this doesn't work, click on the following link [Windows Kernel Package](https://learn.microsoft.com/es-es/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package) and follow the instructions to install it, after it's done then open the Docker Desktop application.
 
 ### Running the application
 
