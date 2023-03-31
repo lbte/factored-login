@@ -43,12 +43,12 @@ Once you have Docker installed, follow these steps to run the application:
 
 7. Whenever you want the application to stop running, go back to the terminal or command line and press the key combination `Ctrl + C`.
 
-### Importan considerations
+### Important considerations
 
-The thins you can do with this applications are login and seeing the users profile page or in case you don't have an account, you're able to register the user and inmediately log in to see their profile, when you are on the profile screen you can see the users main information and a random avatar, as well a skills table that you can  mange to add more or update the existing ones, which allow the creation of a Spyder type chart according to each skills level. Besides, you can also logout fron the button that appears on the profile and go back to the login screen.
+The things you can do with this application are login and seeing the users profile page or in case you don't have an account, you're able to register the user and inmediately log in to see their profile, when you are on the profile screen you can see the users main information and a random avatar, as well as a skills table that you can  manage to add more or update the existing ones, which allow the creation of a Spyder type chart according to each skills level. Besides, you can also logout with the button that appears on the profile and go back to the login screen.
 
 In case you don't want to create a new user, you can log in with two **dummy users** that have been already created, these are their credentials to log in:
-* **Email1:** laura@gmail.com or **Email2:** juan@gmail.com
+* **Email 1:** laura@gmail.com or **Email 2:** juan@gmail.com
 * **Password for both:** 12345678
 
 ## Author
