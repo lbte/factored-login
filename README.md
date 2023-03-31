@@ -12,7 +12,7 @@ This app is a login and register page that allows you to register an user, go to
 
 Before you can run the application, you need to have Docker installed on your computer. Docker is a tool that allows you to run applications in containers, which makes it easy to run applications without worrying about setting up your computer environment.
 
-To install Docker, follow the instructions for your operating system on the official Docker website: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/). **You must keep the Docker window open when doing the step 4 from the following section.** 
+To install Docker, follow the instructions for your operating system on the official Docker website: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/). **You must keep the Docker window open or at least, leave it running in the background when doing the step 4 from the following section.** 
 
 ### Running the application
 
@@ -43,14 +43,23 @@ Once you have Docker installed, follow these steps to run the application:
 
 7. Whenever you want the application to stop running, go back to the terminal or command line and press the key combination `Ctrl + C`.
 
+### Importan considerations
+
+The thins you can do with this applications are login and seeing the users profile page or in case you don't have an account, you're able to register the user and inmediately log in to see their profile, when you are on the profile screen you can see the users main information and a random avatar, as well a skills table that you can  mange to add more or update the existing ones, which allow the creation of a Spyder type chart according to each skills level. Besides, you can also logout fron the button that appears on the profile and go back to the login screen.
+
+In case you don't want to create a new user, you can log in with two **dummy users** that have been already created, these are their credentials to log in:
+* **Email1:** laura@gmail.com or **Email2:** juan@gmail.com
+* **Password for both:** 12345678
+
 ## Author
 
-Laura Bustamante
-
+Laura Vanesa Bustamante Hurtado
 
 ## Credits
 
 * The frontend was built using [React](https://react.dev).
+* For the styling of the components the [Bulma CSS Framework](https://bulma.io) was used.
 * The backend was built using [FastAPI](https://fastapi.tiangolo.com).
+* For the database management [SQLAlchemy](https://www.sqlalchemy.org) with SQLite  was used. 
 * Docker was used to containerize the application.
 * Based on [Rithmic](https://www.youtube.com/@iamrithmic) and [IndianCoders](https://www.youtube.com/@IndianCoders) Tutorials on Youtube.
