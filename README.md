@@ -14,9 +14,13 @@ Before you can run the application, you need to have Docker installed on your co
 
 To install Docker, follow the instructions for your operating system on the official Docker website: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/). **You must keep the Docker window open or at least, leave it running in the background when doing the step 4 from the following section.** 
 
+When you install Docker, you must open it, in case it shows a message to update wsl, you can take two ways to do it:
+1. Open a command promt or terminal by opening any directory, right clicking your mouse and choosing the `Open in Terminal` option. Then write the following command: `wsl --update` and after it's done then open the Docker Desktop application.
+2. In case this doesn't work, click on the following link [Windows Kernel Package](https://learn.microsoft.com/es-es/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package) and follow the instructions to install it.
+
 ### Running the application
 
-Once you have Docker installed, follow these steps to run the application:
+Once you have done all explain in the Prerequisites section above, follow these steps to run the application:
 
 1. Download the project files from GitHub: [https://github.com/lbte/factored-login.git](https://github.com/lbte/factored-login.git)
     * When you go to the links page, click the green button that says `<> Code`.
@@ -35,7 +39,7 @@ Once you have Docker installed, follow these steps to run the application:
 
     `docker-compose up`
 
-    This will start the application and display logs in the terminal, this might take a while, please be patient (keep the terminal or console open until you want to stop running the application).
+    This will start the application and display logs in the terminal, **this might take a while, please BE PATIENT (keep the terminal or console open until you want to stop running the application)**.
 
 6. Open a web browser and go to [http://localhost:3000](http://localhost:3000). This will open the web application in your browser.
 
